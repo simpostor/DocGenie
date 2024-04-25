@@ -9,12 +9,12 @@ import chainlit as cl
 
 @cl.on_chat_start
 async def on_chat_start():
-    model = Ollama(model="mistral")
+    model = Ollama(model="phi3")
     prompt = ChatPromptTemplate.from_messages(
         [
             (
                 "system",
-                "You're a very knowledgeable historian who provides accurate and eloquent answers to historical questions.",
+                "You're a very knowledgeable AI Model which provides accurate and eloquent answers to all questions.",
             ),
             ("human", "{question}"),
         ]

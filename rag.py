@@ -46,6 +46,7 @@ async def on_chat_start():
     pdf_text = ""
     for page in pdf.pages:
         pdf_text += page.extract_text()
+    
         
 
     # Split the text into chunks
