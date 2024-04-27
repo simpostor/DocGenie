@@ -15,7 +15,6 @@ ABS_PATH: str = os.path.dirname(os.path.abspath(__file__))
 DB_DIR: str = os.path.join(ABS_PATH, "db")
 
 
-# Create vector database
 def create_vector_database():
     """
     Creates a vector database using document loaders and embeddings.
