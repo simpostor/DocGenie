@@ -3,13 +3,29 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.schema import StrOutputParser
 from langchain.schema.runnable import Runnable
 from langchain.schema.runnable.config import RunnableConfig
-
+import os
+from dotenv import load_dotenv
 import chainlit as cl
+import csv
 
+load_dotenv()  # Load environment variables from .env file
+
+secret_key = os.getenv("CHAINLIT_AUTH_SECRET")
+
+
+@cl.password_auth_callback
+def auth_callback(username: str, password: str):
+    with open('users.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['username'] == username and row['password'] == password:
+                # You may want to return the user's role or any other metadata
+                return cl.User(identifier=username, metadata={"role": row['role'], "provider": "database"})
+    return None
 
 @cl.on_chat_start
 async def on_chat_start():
-    model = Ollama(model="phi3")
+    model = Ollama(model="mistral")
     prompt = ChatPromptTemplate.from_messages(
         [
             (

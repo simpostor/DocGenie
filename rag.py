@@ -1,4 +1,6 @@
 from typing import List
+from typing import Optional
+import csv
 import PyPDF2
 from io import BytesIO
 from langchain_community.embeddings import OllamaEmbeddings
@@ -16,7 +18,31 @@ from langchain_community.chat_models import ChatOllama
 from langchain.memory import ChatMessageHistory, ConversationBufferMemory
 
 import chainlit as cl
+import os
+from dotenv import load_dotenv
+import asyncio
 
+# Define the inactivity timeout in seconds
+INACTIVITY_TIMEOUT = 300  # 5 minutes
+
+# Variable to track the last activity time
+last_activity_time = 0                                  
+
+
+load_dotenv()  # Load environment variables from .env file
+
+secret_key = os.getenv("CHAINLIT_AUTH_SECRET")
+
+
+@cl.password_auth_callback
+def auth_callback(username: str, password: str):
+    with open('users.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['username'] == username and row['password'] == password:
+                # You may want to return the user's role or any other metadata
+                return cl.User(identifier=username, metadata={"role": row['role'], "provider": "database"})
+    return None
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 
 
