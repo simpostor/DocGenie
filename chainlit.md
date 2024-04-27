@@ -1,14 +1,28 @@
-# Welcome to Chainlit! 🚀🤖
+# DocGenie 📚🔍
 
-Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powerful tool designed to help you prototype, debug and share applications built on top of LLMs.
+DocGenie is a Python-based chat application designed to interact with PDF documents using local language model (LLM) models. It allows users to securely converse with PDF files containing sensitive or confidential information without relying on external services.
 
-## Useful Links 🔗
+## Technologies Used
 
-- **Documentation:** Get started with our comprehensive [Chainlit Documentation](https://docs.chainlit.io) 📚
-- **Discord Community:** Join our friendly [Chainlit Discord](https://discord.gg/k73SQ3FyUh) to ask questions, share your projects, and connect with other developers! 💬
+### Chainlit Framework
+Chainlit is a framework that helped manage the backend local models.
 
-We can't wait to see what you create with Chainlit! Happy coding! 💻😊
+### ChromaDB
+ChromaDB is used for vector stores (docs).
 
-## Welcome screen
+### Langchain
+Langchain is a Python library designed for natural language processing (NLP) tasks, particularly focused on text analysis and understanding.
 
-To modify the welcome screen, edit the `chainlit.md` file at the root of your project. If you do not want a welcome screen, just leave this file empty.
+### Ollama
+Ollama is an open-source framework designed to make working with large language models (LLMs) easier. It allows model comparison, tweaking, and customization.
+
+## GitHub Repository
+
+[Doc Genie GitHub Repo](https://github.com/simpostor/DocGenie)
+
+## Collaborators 🧑‍💻
+
+- **Atharva Sankhe**
+- **Om Sankhe**
+- **Smit Mhatre**
+- **Atharva Mane**
