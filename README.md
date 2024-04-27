@@ -60,3 +60,16 @@ Example 1
    chainlit run rag.py
    ```
 
+## Authentication Setup
+
+To set up authentication, follow these steps:
+
+1. Run the following command in your terminal:
+
+    ```bash
+    chainlit create-secret
+    ```
+
+2. Copy the generated user authentication token and paste it in the `.env` file.
+
+3. Add your credentials in the `users.csv` file.
