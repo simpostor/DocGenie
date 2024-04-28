@@ -73,3 +73,15 @@ To set up authentication, follow these steps:
 2. Copy the generated user authentication token and paste it in the `.env` file.
 
 3. Add your credentials in the `users.csv` file.
+
+## Google Authentication Setup
+
+To set up Google OAuth, follow these steps:
+
+1. Create a Google Cloud Platform account.
+
+2. Create a project on the Google Cloud Console.
+
+3. Add credentials for authentication. 
+
+4. Google will provide a client ID and client secret, which is to be put in environment variables.
