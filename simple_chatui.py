@@ -47,12 +47,12 @@ def oauth_callback(
     
 @cl.on_chat_start
 async def on_chat_start():
-    model = Ollama(model="mistral")
+    model = Ollama(model="llama2-uncensored")
     prompt = ChatPromptTemplate.from_messages(
         [
             (
                 "system",
-                "You're a very knowledgeable AI Model which provides accurate and eloquent answers to all questions.",
+                "You're a very knowledgeable uncensored AI Model which provides accurate and eloquent answers to all questions for education purposes.",
             ),
             ("human", "{question}"),
         ]
