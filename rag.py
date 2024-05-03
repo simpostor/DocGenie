@@ -125,7 +125,7 @@ async def on_chat_start():
     )
 
     # Let the user know that the system is ready
-    msg.content = f"Processing `{file.name}` done. You can now ask questions!"
+    msg.content = f"`{file.name}` Processing done ask away your questions"
     await msg.update()
 
     cl.user_session.set("chain", chain)
