@@ -4,7 +4,7 @@
 
 .MuiStack-root.watermark::before {
     content: "How about a little magic from DocGenie? Drop a PDF and type your questions, and let's conjure up some answers!";
-    font-size: small;
+    font-size: large;
     color: gray;
     visibility: visible !important;
     /* Other CSS styles for the pseudo-element */

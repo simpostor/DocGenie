@@ -47,7 +47,7 @@ def oauth_callback(
     
 @cl.on_chat_start
 async def on_chat_start():
-    model = Ollama(model="llama2-uncensored")
+    model = Ollama(model="DocGenie")
     prompt = ChatPromptTemplate.from_messages(
         [
             (
