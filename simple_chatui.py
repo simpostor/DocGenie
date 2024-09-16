@@ -24,30 +24,30 @@ def auth_callback(username: str, password: str):
                 return cl.User(identifier=username, metadata={"role": row['role'], "provider": "database"})
     return None
 
-@cl.oauth_callback
-def oauth_callback(
-    provider_id: str,
-    token: str,
-    raw_user_data: Dict[str, str],
-    default_user: cl.User,
-) -> Optional[cl.User]:
-    # Check if the OAuth provider is Google
-    if provider_id == "google":
-        # Extract the user's email domain from the raw user data
-        user_email = raw_user_data.get("email", "")
-        email_domain = user_email.split("@")[-1]
+# @cl.oauth_callback
+# def oauth_callback(
+#     provider_id: str,
+#     token: str,
+#     raw_user_data: Dict[str, str],
+#     default_user: cl.User,
+# ) -> Optional[cl.User]:
+#     # Check if the OAuth provider is Google
+#     if provider_id == "google":
+#         # Extract the user's email domain from the raw user data
+#         user_email = raw_user_data.get("email", "")
+#         email_domain = user_email.split("@")[-1]
 
-        # Check if the user's email domain matches the allowed domain
-        if email_domain == "dypatil.edu":
-            # Allow access for users with email domain "dypatil.edu"
-            return default_user
+#         # Check if the user's email domain matches the allowed domain
+#         if email_domain == "dypatil.edu":
+#             # Allow access for users with email domain "dypatil.edu"
+#             return default_user
 
-    # Deny access for all other users
-    return None
+#     # Deny access for all other users
+#     return None
     
 @cl.on_chat_start
 async def on_chat_start():
-    model = Ollama(model="DocGenie")
+    model = Ollama(model="llama3")
     prompt = ChatPromptTemplate.from_messages(
         [
             (
