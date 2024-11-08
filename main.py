@@ -15,12 +15,12 @@ DB_DIR: str = os.path.join(ABS_PATH, "db")
 
 
 # Set up RetrievelQA model
-rag_prompt_mistral = hub.pull("rlm/rag-prompt-mistral")
+rag_prompt_llama = hub.pull("rlm/rag-prompt-llama")
 
 
 def load_model():
     llm = Ollama(
-        model="mistral",
+        model="llama3",
         verbose=True,
         callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]),
     )
@@ -31,7 +31,7 @@ def retrieval_qa_chain(llm, vectorstore):
     qa_chain = RetrievalQA.from_chain_type(
         llm,
         retriever=vectorstore.as_retriever(),
-        chain_type_kwargs={"prompt": rag_prompt_mistral},
+        chain_type_kwargs={"prompt": rag_prompt_llama},
         return_source_documents=True,
     )
     return qa_chain
@@ -41,7 +41,7 @@ def qa_bot():
     llm = load_model()
     DB_PATH = DB_DIR
     vectorstore = Chroma(
-        persist_directory=DB_PATH, embedding_function=OllamaEmbeddings(model="mistral")
+        persist_directory=DB_PATH, embedding_function=OllamaEmbeddings(model="llama3")
     )
 
     qa = retrieval_qa_chain(llm, vectorstore)
@@ -60,7 +60,7 @@ async def start():
     welcome_message = cl.Message(content="Starting the bot...")
     await welcome_message.send()
     welcome_message.content = (
-        "Hi, Welcome to Chat With Documents using Ollama (mistral model) and LangChain."
+        "Hi, Welcome to Chat With Documents using Ollama (llama3 model) and LangChain."
     )
     await welcome_message.update()
     cl.user_session.set("chain", chain)

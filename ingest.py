@@ -37,7 +37,7 @@ def create_vector_database():
     #chunked_documents[0]
 
     # Initialize Ollama Embeddings
-    ollama_embeddings = OllamaEmbeddings(model="mistral")
+    ollama_embeddings = OllamaEmbeddings(model="llama3")
 
     # Create and persist a Chroma vector database from the chunked documents
     vector_database = Chroma.from_documents(

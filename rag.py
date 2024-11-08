@@ -101,7 +101,7 @@ async def on_chat_start():
     metadatas = [{"source": f"{i}-pl"} for i in range(len(texts))]
 
     # Create a Chroma vector store
-    embeddings = OllamaEmbeddings(model="deepseek-coder-v2:16b ")
+    embeddings = OllamaEmbeddings(model="llama3")
     docsearch = await cl.make_async(Chroma.from_texts)(
         texts, embeddings, metadatas=metadatas
     )
@@ -117,7 +117,7 @@ async def on_chat_start():
 
     # Create a chain that uses the Chroma vector store
     chain = ConversationalRetrievalChain.from_llm(
-        ChatOllama(model="deepseek-coder-v2:16b"),
+        ChatOllama(model="llama3"),
         chain_type="stuff",
         retriever=docsearch.as_retriever(),
         memory=memory,
